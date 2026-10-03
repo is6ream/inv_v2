@@ -497,6 +497,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
   $('#music').addEventListener('click', () => {
     if (audio.paused) {
       userOff = false;
+      audio.currentTime = 0; // каждый раз включаем с начала, чтобы громкость снова плавно нарастала
       audio.play().then(() => setPlaying(true)).catch(() => { setPlaying(false); say('Не удалось включить звук, попробуйте ещё раз'); });
     } else {
       userOff = true;
