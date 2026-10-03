@@ -107,6 +107,21 @@ p{margin:0}
 /* venue / guests / rsvp */
 .map{width:100%;height:260px;background:var(--mist);border:1px solid var(--line);overflow:hidden}
 .map iframe{display:block;width:100%;height:100%;border:0}
+/* Карточки мест: арка как на обложке, нажимается вся карточка */
+.places{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}
+.place{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;padding:30px 10px 16px;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:999px 999px 6px 6px;background:color-mix(in srgb,var(--mist) 55%,transparent);color:var(--ink);text-decoration:none;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s}
+.place::before{content:'';position:absolute;inset:5px 5px 0;border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);border-bottom:0;border-radius:999px 999px 0 0;pointer-events:none}
+.place .wash{position:absolute;top:34px;left:50%;width:84px;height:62px;margin-left:-42px;background:var(--accent);opacity:.1;border-radius:58% 42% 63% 37%/48% 61% 39% 52%;filter:blur(10px);pointer-events:none}
+.place .ic{position:relative;width:62px;height:62px;margin-bottom:2px;fill:none;stroke:var(--accent);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
+.place .ic .soft{opacity:.5}
+.place .pt{font-family:var(--f-display);font-size:1.55rem;line-height:1.1;color:var(--accent);font-variant-numeric:tabular-nums}
+.place .pn{font-family:var(--f-display);font-size:1.25rem;line-height:1.15}
+.place small{font-size:.8rem;color:var(--ash);line-height:1.35}
+.place .go{display:inline-flex;align-items:center;gap:6px;margin-top:12px;min-height:38px;padding:0 14px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:.82rem;white-space:nowrap;transition:gap .3s var(--ease)}
+.place .go svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.3}
+.place:hover,.place:focus-visible{transform:translateY(-3px);box-shadow:0 10px 24px rgba(47,44,40,.1);background:color-mix(in srgb,var(--mist) 85%,transparent)}
+.place:hover .go{gap:9px}
+.place:active{transform:translateY(-1px) scale(.985)}
 .guests{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;width:100%}
 .gi{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;text-align:center}
 .gi .wash{position:absolute;top:14px;left:50%;width:74px;height:60px;margin-left:-30px;background:var(--accent);opacity:.12;border-radius:58% 42% 63% 37%/48% 61% 39% 52%;filter:blur(9px);transform:rotate(-12deg);pointer-events:none}
@@ -275,9 +290,23 @@ html.locked,html.locked body{overflow:hidden}
   <!-- Место -->
   <section class="scene" aria-label="Место">
     <h2>Ждём вас</h2>
-    <div class="row2">
-      <a class="btn" style="padding:0 8px;white-space:nowrap" target="_blank" rel="noopener" href="https://yandex.ru/maps/org/khakimovskaya_mechet/5087041655/">Обряд никаха</a>
-      <a class="btn" style="padding:0 8px;white-space:nowrap" target="_blank" rel="noopener" href="https://yandex.ru/maps/org/pervaya_ufimskaya_sobornaya_mechet/1014966230/">Банкет</a>
+    <div class="places">
+      <a class="place" target="_blank" rel="noopener" href="https://yandex.ru/maps/org/khakimovskaya_mechet/5087041655/">
+        <span class="wash" aria-hidden="true"></span>
+        <svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path d="M21 54V36H43V54M21 36C19 28 26 23 32 18C38 23 45 28 43 36M32 18V13"/><path d="M33.6 7.2A3 3 0 1 0 33.6 12.8A2.4 2.4 0 1 1 33.6 7.2Z"/><path d="M29 54V47Q32 42 35 47V54"/><path d="M12 54V27M16 54V27M11 27L14 19L17 27ZM48 54V27M52 54V27M47 27L50 19L53 27Z"/><path class="soft" d="M5 56Q18 54.6 32 56T59 56"/></svg>
+        <span class="pt">16:00</span>
+        <span class="pn">Обряд никаха</span>
+        <small>Хакимовская мечеть</small>
+        <span class="go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.5-4.6-4.5-8a4.5 4.5 0 0 1 9 0c0 3.4-4.5 8-4.5 8Z"/><circle cx="8" cy="6.4" r="1.6"/></svg>Как добраться</span>
+      </a>
+      <a class="place" target="_blank" rel="noopener" href="https://yandex.ru/maps/org/pervaya_ufimskaya_sobornaya_mechet/1014966230/">
+        <span class="wash" aria-hidden="true"></span>
+        <svg class="ic" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 40H52M15 40C15 30 22.6 23 32 23S49 30 49 40M32 23V19M29.5 19H34.5"/><path d="M9 44H55L51 49H13Z"/><path class="soft" d="M24 14Q22 11 24 8M32 13Q30 10 32 6M40 14Q38 11 40 8"/><path class="soft" d="M5 56Q18 54.6 32 56T59 56"/></svg>
+        <span class="pt">18:00</span>
+        <span class="pn">Банкет</span>
+        <small>ул. Тукаева, 52</small>
+        <span class="go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s-4.5-4.6-4.5-8a4.5 4.5 0 0 1 9 0c0 3.4-4.5 8-4.5 8Z"/><circle cx="8" cy="6.4" r="1.6"/></svg>Как добраться</span>
+      </a>
     </div>
   </section>
 
@@ -510,7 +539,7 @@ html.locked,html.locked body{overflow:hidden}
     const STAGGER = 0.12;
     const BLOCKS = '.scene:not(.cover) > :not(.bird):not(.meadow):not(.wash2)';
     const PRESETS = [['.scene:not(.cover) > .flourish', 'spread'], ['.scene:not(.cover) > .ar', 'ink'], ['.scene:not(.cover) > .vrule', 'line-y'], ['.scene:not(.cover) > .names, .bigdate', 'zoom']];
-    const GROUPS = [['.parents', '> div', 1], ['.program', '> *', 2], ['.guests', '> .gi', 1], ['.row2', '> .btn', 1], ['#rsvpMsgr', '> .btn', 1]];
+    const GROUPS = [['.parents', '> div', 1], ['.program', '> *', 2], ['.guests', '> .gi', 1], ['.places', '> .place', 1], ['.row2', '> .btn', 1], ['#rsvpMsgr', '> .btn', 1]];
 
     document.querySelectorAll(BLOCKS).forEach((el) => { el.dataset.st = 'up'; });
     for (const [sel, type] of PRESETS) document.querySelectorAll(sel).forEach((el) => { el.dataset.st = type; });
