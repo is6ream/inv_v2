@@ -278,14 +278,9 @@ textarea:focus{outline:none;border-color:var(--accent)}
   <!-- Место -->
   <section class="scene" aria-label="Место">
     <h2>Ждём вас</h2>
-    <div style="font-size:1.05rem">Первая соборная мечеть</div>
-    <div class="muted" style="font-size:.9rem">г. Уфа, ул. Тукаева, 52</div>
-    <div class="map" id="mapImg">
-      <iframe src="https://yandex.ru/map-widget/v1/?mode=search&amp;text=%D0%A3%D1%84%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D1%83%D0%BA%D0%B0%D0%B5%D0%B2%D0%B0%2C%2052%2C%20%D0%9F%D0%B5%D1%80%D0%B2%D0%B0%D1%8F%20%D1%81%D0%BE%D0%B1%D0%BE%D1%80%D0%BD%D0%B0%D1%8F%20%D0%BC%D0%B5%D1%87%D0%B5%D1%82%D1%8C&amp;z=16" title="Первая соборная мечеть на Яндекс Картах" loading="lazy" allowfullscreen></iframe>
-    </div>
     <div class="row2">
-      <a class="btn" target="_blank" rel="noopener" href="https://yandex.ru/maps/?text=%D0%A3%D1%84%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A2%D1%83%D0%BA%D0%B0%D0%B5%D0%B2%D0%B0%2C%2052">Яндекс Карты</a>
-      <a class="btn" target="_blank" rel="noopener" href="https://2gis.ru/ufa/search/%D0%A2%D1%83%D0%BA%D0%B0%D0%B5%D0%B2%D0%B0%2052">2ГИС</a>
+      <a class="btn" style="padding:0 8px;white-space:nowrap" target="_blank" rel="noopener" href="https://yandex.ru/maps/org/khakimovskaya_mechet/5087041655/">Обряд никаха</a>
+      <a class="btn" style="padding:0 8px;white-space:nowrap" target="_blank" rel="noopener" href="https://yandex.ru/maps/org/pervaya_ufimskaya_sobornaya_mechet/1014966230/">Праздничный ужин</a>
     </div>
   </section>
 
@@ -374,10 +369,6 @@ textarea:focus{outline:none;border-color:var(--accent)}
           <label><input type="radio" name="rsvp" value="form">Форма</label>
           <label><input type="radio" name="rsvp" value="both">Форма + мессенджер</label>
         </div></fieldset>
-        <fieldset><legend>Карта</legend><div class="opts">
-          <label><input type="radio" name="map" value="img" checked>Карта и кнопки</label>
-          <label><input type="radio" name="map" value="btns">Только кнопки</label>
-        </div></fieldset>
         <fieldset><legend>Музыка</legend><div class="opts">
           <label><input type="radio" name="music" value="off">Без музыки</label>
           <label><input type="radio" name="music" value="btn" checked>Нашид (включается сам)</label>
@@ -445,7 +436,6 @@ textarea:focus{outline:none;border-color:var(--accent)}
   const LABELS = {
     accent: ['Акцент', { sage: 'Шалфей', rose: 'Пыльная роза', blue: 'Голубой' }],
     rsvp: ['Ответ гостей', { msgr: 'Мессенджеры', form: 'Форма', both: 'Форма + мессенджер' }],
-    map: ['Карта', { img: 'Карта и кнопки', btns: 'Только кнопки' }],
     music: ['Музыка', { off: 'Без музыки', btn: 'Нашид (включается сам)' }],
     motion: ['Анимации', { calm: 'Тихие', mid: 'Средние' }],
   };
@@ -459,7 +449,6 @@ textarea:focus{outline:none;border-color:var(--accent)}
     $('#rsvpForm').hidden = r === 'msgr';
     $('#rsvpMsgr').hidden = r !== 'msgr';
     $('#rsvpAlt').hidden = r !== 'both';
-    $('#mapImg').hidden = val('map') !== 'img';
     $('#music').hidden = val('music') !== 'btn';
     if (val('music') !== 'btn') stopMusic(); else startMusic();
     root.dataset.motion = reduce ? 'calm' : val('motion');
