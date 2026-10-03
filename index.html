@@ -415,7 +415,7 @@ textarea:focus{outline:none;border-color:var(--accent)}
     if (!musicAllowed() || !audio.paused) return;
     audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
   }
-  const GESTURES = ['pointerdown', 'touchend', 'keydown'];
+  const GESTURES = ['pointerdown', 'pointerup', 'touchend', 'mousedown', 'click', 'keydown'];
   const onFirstGesture = (e) => {
     if (e.target.closest && e.target.closest('#music')) return; // the button handles itself
     startMusic();
